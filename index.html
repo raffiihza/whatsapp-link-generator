@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Generator WhatsApp</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    form {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Link Generator WhatsApp</h1>
+
+<form>
+  <label for="phone">Nomor Telepon:</label><br>
+  <input type="text" id="phone" name="phone" value="+62"><br>
+  <label for="message">Pesan:</label><br>
+  <textarea id="message" name="message" rows="4" cols="50" style="width: 416px; height: 340px;"></textarea><br><br>
+  <input type="submit" value="Submit" onclick="submitForm(event)">
+</form> 
+
+<p id="link"></p>
+
+<script>
+function submitForm(event) {
+  event.preventDefault();
+  var phone = document.getElementById("phone").value;
+  var message = document.getElementById("message").value;
+  var link = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+  
+  var a = document.createElement('a');
+  a.textContent = 'Kirim Pesan WhatsApp';
+  a.setAttribute('href', link);
+  a.setAttribute('target', '_blank');
+  
+  var p = document.getElementById("link");
+  p.innerHTML = '';
+  p.appendChild(a);
+}
+</script>
+
+</body>
+</html>
